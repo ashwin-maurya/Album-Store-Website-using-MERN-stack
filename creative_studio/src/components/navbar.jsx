@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import menu from "../images/icons/menu.svg";
 import arrowDown from "../images/icons/chevron-down.svg";
 import arrowRight from "../images/icons/chevron-right.svg";
@@ -8,7 +8,10 @@ import logo from "../images/home/web-logo.png";
 
 export default function Navbar() {
   const [isResponsive, setResponsive] = useState(false);
-
+  let location = useLocation();
+  useEffect(() => {
+    console.log(location.pathname);
+  }, [location]);
   function myFunction() {
     setResponsive((prevResponsive) => !prevResponsive);
   }
@@ -18,10 +21,15 @@ export default function Navbar() {
         className={`topnav ${isResponsive ? "responsive" : ""}`}
         id="myTopnav"
       >
-        <ul class="dropdown">
+        <ul className="dropdown">
           <img src={logo} alt="logo" className="main-logo" height="40px" />
           <li>
-            <Link to="/home">HOME</Link>
+            <Link
+              to="/home"
+              className={`${location.pathname === "/home" ? "active" : ""}`}
+            >
+              HOME
+            </Link>
           </li>
           <li>
             <Link>

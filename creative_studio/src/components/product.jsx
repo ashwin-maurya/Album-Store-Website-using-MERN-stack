@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/product.css";
 
-export default function product() {
+export default function Product() {
   return (
     <>
       <div className="wrapper">
