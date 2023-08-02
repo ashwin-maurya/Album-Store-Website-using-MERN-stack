@@ -1,0 +1,109 @@
+/* ПОДВАЛ */
+
+.site-footer {
+    margin-top: 20px;
+}
+
+.footer-wrap {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(244, 244, 244);
+}
+
+
+/* Intro */
+
+#intro * {
+    text-align: center;
+}
+
+#intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#intro .logo {
+    border-bottom: 0;
+    display: inline-block;
+    margin: 0 0 1em 0;
+    overflow: hidden;
+    position: relative;
+    width: 4em;
+}
+
+#intro .logo img {
+    display: block;
+    margin-left: -0.25em;
+    width: 4.5em;
+}
+
+#intro header h2 {
+    font-size: 2em;
+    font-weight: 900;
+}
+
+#intro header p {
+    font-size: 0.8em;
+}
+
+@media screen and (max-width: 1280px) {
+    #intro {
+        margin: 0 0 3em 0;
+        text-align: center;
+    }
+    #intro header h2 {
+        font-size: 2em;
+    }
+    #intro header p {
+        font-size: 0.7em;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    #intro {
+        margin: 0 0 1.5em 0;
+        padding: 1.25em 0;
+    }
+    #intro> :last-child {
+        margin-bottom: 0;
+    }
+    #intro .logo {
+        margin: 0 0 0.5em 0;
+    }
+    #intro header h2 {
+        font-size: 1.25em;
+    }
+    #intro header> :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.social-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.social-item:nth-child(n+2) {
+    margin-left: 30px;
+}
+
+.social-link {
+    display: inline-block;
+    width: 20px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.copyrights {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: var(--green);
+}
