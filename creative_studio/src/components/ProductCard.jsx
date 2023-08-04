@@ -15,7 +15,7 @@ export default function ProductCard(props) {
         <div className="card-content">
           <div className="card-head">
             <h2>{product.name}</h2>
-            <h5>{product.price}</h5>
+            <h3>{product.price}</h3>
           </div>
           <h5>{product.category}</h5>
           <p>{product.desc}</p>

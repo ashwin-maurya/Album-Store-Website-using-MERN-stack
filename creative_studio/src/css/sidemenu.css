@@ -1,0 +1,64 @@
+.sidebar {
+    height: 100%;
+    width: 100%;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: sticky;
+}
+
+.hide {
+    display: none;
+}
+
+.active {
+    background-color: #cc4444;
+}
+
+.item {
+    color: white;
+    font-size: 20px;
+}
+
+.side-item h2 {
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid red;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.side-item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-item li {
+    text-transform: uppercase;
+    position: relative;
+    padding: 0 20px;
+    font-size: 20px;
+}
+
+.side-item li a {
+    color: #ffffff;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+ul li:hover>a {
+    background-color: #cc4444;
+    color: #ffffff !important;
+}

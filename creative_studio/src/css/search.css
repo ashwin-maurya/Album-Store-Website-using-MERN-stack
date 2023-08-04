@@ -1,14 +1,15 @@
 .row1 {
     display: flex;
     margin: 10px;
+    flex-direction: row;
 }
 
-.leftcolumn1 {
+.leftcolumn11 {
     float: left;
     width: 70%;
 }
 
-.rightcolumn1 {
+.rightcolumn11 {
     float: left;
     width: 25%;
 }

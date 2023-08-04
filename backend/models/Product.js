@@ -18,6 +18,10 @@ const ProductSchema = new Schema({
         type: String,
         require: true
     },
+    imageURL: {
+        type: String,
+        require: true
+    },
     date: {
         type: Date,
         default: Date.now,

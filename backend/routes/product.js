@@ -6,9 +6,8 @@ const { body, validationResult } = require('express-validator');
 
 //ROUTE 1:: Get all the products using GET "/api/product/getproducts". Login required
 
-router.get('/fetchproducts', fetchuser, async(req, res) => {
+router.get('/fetchproducts', async(req, res) => {
     try {
-
         const products = await Product.find()
         res.json(products)
     } catch (error) {
@@ -23,12 +22,13 @@ router.post('/addproducts', fetchuser, [
     //validations
     body('category', 'Choose a Valid Category').exists(),
     body('name', 'Must be more than 5 Characters').isLength({ min: 5 }),
-    body('desc', 'Must be more than 10 Characters').isLength({ min: 10 }),
+    body('desc', 'Must be more than 5 Characters').isLength({ min: 5 }),
     body('price', 'Cannot be empty').exists(),
+    body('imageURL', 'Cannot be empty').exists(),
 ], async(req, res) => {
 
     try {
-        const { category, name, desc, price } = req.body
+        const { category, name, desc, price, imageURL } = req.body
             //if there are errors returns the error
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -39,7 +39,8 @@ router.post('/addproducts', fetchuser, [
             category,
             name,
             desc,
-            price
+            price,
+            imageURL
         })
         const savedProduct = await product.save()
         res.json(savedProduct)
@@ -55,13 +56,14 @@ router.put('/updateproducts/:id', fetchuser, async(req, res) => {
 
     try {
 
-        const { category, name, desc, price } = req.body
+        const { category, name, desc, price, imageURL } = req.body
 
         const newProduct = {}
         if (category) { newProduct.category = category }
         if (name) { newProduct.name = name }
         if (desc) { newProduct.desc = desc }
-        if (price) { newProduct.category = price }
+        if (price) { newProduct.price = price }
+        if (imageURL) { newProduct.imageURL = imageURL }
 
         let product = await Product.findById(req.params.id)
         if (!product) { res.status(404).send("Product not Found") }
@@ -76,13 +78,13 @@ router.put('/updateproducts/:id', fetchuser, async(req, res) => {
 })
 
 
-//ROUTE 3:: Deleting products using POST "/api/product/deleteproduct". Login required
+//ROUTE 4:: Deleting products using POST "/api/product/deleteproduct". Login required
 
-router.put('/deleteproduct/:id', fetchuser, async(req, res) => {
+router.delete('/deleteproduct/:id', fetchuser, async(req, res) => {
 
     try {
 
-        const { category, name, desc, price } = req.body
+        const { category, name, desc, price, imageURL } = req.body
 
         let product = await Product.findById(req.params.id)
         if (!product) { res.status(404).send("Product not Found") }
@@ -95,5 +97,31 @@ router.put('/deleteproduct/:id', fetchuser, async(req, res) => {
     }
 
 })
+
+
+// ...
+
+// ROUTE 5:: Searching products by category and name using GET "/api/product/search". Login required
+router.get('/search', async(req, res) => {
+    try {
+        const query = req.query.q; // Assuming you pass the search query as a query parameter 'q'
+
+        // Use the Mongoose .find() method to search for products with the given query
+        const results = await Product.find({
+            $or: [
+                { name: { $regex: query, $options: 'i' } }, // Case-insensitive search on the 'name' field
+                { category: { $regex: query, $options: 'i' } }, // Case-insensitive search on the 'category' field
+            ],
+        });
+
+        res.json(results); // Return the search results as JSON
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// ...
+
 
 module.exports = router

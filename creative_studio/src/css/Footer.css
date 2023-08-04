@@ -1,4 +1,6 @@
-/* ПОДВАЛ */
+.hide {
+    display: none;
+}
 
 .site-footer {
     margin-top: 20px;
@@ -9,9 +11,6 @@
     padding: 20px;
     background-color: rgb(244, 244, 244);
 }
-
-
-/* Intro */
 
 #intro * {
     text-align: center;

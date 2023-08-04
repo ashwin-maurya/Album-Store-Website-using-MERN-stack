@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../css/navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import menu from "../images/icons/menu.svg";
@@ -9,20 +9,22 @@ import logo from "../images/home/web-logo.png";
 export default function Navbar() {
   const [isResponsive, setResponsive] = useState(false);
   let location = useLocation();
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location]);
+
   function myFunction() {
     setResponsive((prevResponsive) => !prevResponsive);
   }
   return (
     <>
       <div
-        className={`topnav ${isResponsive ? "responsive" : ""}`}
+        className={`topnav ${isResponsive ? "responsive" : ""} ${
+          location.pathname.includes("/admin") ? "hide" : ""
+        }`}
         id="myTopnav"
       >
         <ul className="dropdown">
-          <img src={logo} alt="logo" className="main-logo" height="40px" />
+          <li>
+            <img src={logo} alt="logo" className="main-logo" height="40px" />
+          </li>
           <li>
             <Link
               to="/home"
@@ -140,7 +142,11 @@ export default function Navbar() {
           <img src={menu} alt="menu bars" />
         </Link>
       </div>
-      <div className="contact-nav">
+      <div
+        className={`contact-nav ${
+          location.pathname.includes("/admin") ? "hide" : ""
+        }`}
+      >
         <div className="left-nav-contact">
           <div className="shareon">
             <Link className="facebook"></Link>

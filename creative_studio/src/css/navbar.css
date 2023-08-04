@@ -31,6 +31,9 @@
     padding: 0;
     list-style: none;
     display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .dropdown li {
@@ -155,4 +158,8 @@ ul li:hover>ul {
 
 .shareon a {
     margin-right: 5px;
+}
+
+.hide {
+    display: none;
 }

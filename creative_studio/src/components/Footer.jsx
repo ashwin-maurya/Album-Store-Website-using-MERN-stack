@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../css/Footer.css";
-import { Link } from "react-router-dom";
 import logo from "../images/home/web-logo.png";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Footer() {
+  let location = useLocation();
+  useEffect(() => {}, [location]);
   return (
     <>
-      <footer className="site-footer">
+      <footer
+        className={`site-footer ${
+          location.pathname.includes("/admin") ? "hide" : ""
+        }`}
+      >
         <div className="footer-wrap">
           <section id="intro">
             <img src={logo} alt="logo" className="main-logo" height="100px" />

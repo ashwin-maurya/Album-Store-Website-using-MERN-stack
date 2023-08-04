@@ -1,29 +1,36 @@
-import React from "react";
-import "../css/search.css";
-import { Link } from "react-router-dom";
-import Categories from "./Categories";
+import { React, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"; // Import useLocation hook
+import "../css/content.css";
 import ProductCard from "./ProductCard";
-const Search = () => {
+import Categories from "./Categories";
+
+export default function Search() {
+  const [searchResults, setSearchResults] = useState([]); // State to hold the search results
+  const location = useLocation(); // Get the location object
+
+  useEffect(() => {
+    // When the component mounts or location state changes, extract the search results from the location state
+    if (location.state && location.state.results) {
+      setSearchResults(location.state.results);
+    }
+  }, [location.state.results]); // Add location.state.results to the dependency array
+
   return (
     <div className="App">
       <div className="row1">
-        <div className="leftcolumn1">
-          <h1>Search Results based on ""</h1>
-
-          <section className="results">
-            <ProductCard></ProductCard>
-          </section>
+        <div className="leftcolumn11">
+          <h1>Search Results based on "{location.search}"</h1>
+          {searchResults.map((product) => (
+            <ProductCard key={product._id} product={product}></ProductCard>
+          ))}
         </div>
         <hr />
-        <div className="rightcolumn1">
+        <div className="rightcolumn11">
           <div className="slider">
-            <h2>Categories:</h2>
-            <Categories></Categories>
+            <Categories />
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default Search;
+}
