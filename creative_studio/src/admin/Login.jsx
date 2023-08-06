@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function Login(props) {
+import { useAlert } from "../context/alert/AlertContext"; // Import the useAlert hook
+
+export default function Login() {
   const navigate = useNavigate();
+  const { showAlert } = useAlert();
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -9,24 +13,39 @@ export default function Login(props) {
 
   const loginAuth = async (e) => {
     e.preventDefault();
-    const response = await fetch(`/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: credentials.email,
-        password: credentials.password,
-      }),
-    });
-    const json = await response.json();
-    if (json.success) {
-      // Save the auth token and redirect
-      localStorage.setItem("token", json.authToken);
-      navigate("/admin");
-      props.showAlert("Login Successful", "success");
-    } else {
-      props.showAlert("Wrong Credentials", "failed");
+    try {
+      const response = await fetch(`/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password,
+        }),
+      });
+
+      const json = await response.json();
+      if (json.success) {
+        localStorage.setItem("token", json.authToken);
+        navigate("/admin");
+        showAlert("Login Successful", "success"); // Use showAlert from the useAlert hook
+      } else {
+        showAlert("Wrong Credentials", "failed"); // Use showAlert from the useAlert hook
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 500) {
+          alert("Internal Server Error. Please try again later.", "failed");
+        } else {
+          alert("An error occurred. Please try again later.", "failed");
+        }
+      } else {
+        alert(
+          "Network Error. Please check your internet connection.",
+          "failed"
+        );
+      }
     }
   };
 

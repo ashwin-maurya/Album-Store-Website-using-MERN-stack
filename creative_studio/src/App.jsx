@@ -12,57 +12,34 @@ import Search from "./components/Search";
 import ProductState from "./context/product/productState";
 import Login from "./admin/Login";
 import Admin from "./admin/Admin";
-import Alert from "./admin/Alert";
+import { AlertProvider } from "./context/alert/AlertContext"; // Import AlertProvider
 import Signup from "./admin/Signup";
+import Alert from "./admin/Alert"; // Import the Alert component
+import SocialIcons from "./components/SocialIcons";
 const App = () => {
-  const [alert, setAlert] = useState(null);
-  const showAlert = (message, type) => {
-    setAlert({
-      msg: message,
-      type: type,
-    });
-    setTimeout(() => {
-      setAlert(null);
-    }, 1500);
-  };
   return (
     <ProductState>
       <Router>
-        <div id="parent">
-          <Navbar />
-          <Alert alert={alert} />
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={<Home showAlert={showAlert}></Home>}
-            />
-            <Route
-              exact
-              path="/home"
-              element={<Home showAlert={showAlert}></Home>}
-            />
-            <Route exact path="/product" element={<Product></Product>} />
-            <Route exact path="/search" element={<Search></Search>} />
-            <Route exact path="/search" element={<Search></Search>} />
-            <Route
-              exact
-              path="/admin/login"
-              element={<Login showAlert={showAlert}></Login>}
-            />
-            <Route
-              exact
-              path="/admin/signup"
-              element={<Signup showAlert={showAlert}></Signup>}
-            />
-            <Route
-              exact
-              path="/admin/*"
-              element={<Admin showAlert={showAlert}> </Admin>}
-            />
-          </Routes>
-          <Footer />
-        </div>
+        <AlertProvider>
+          {" "}
+          {/* Wrap the entire app with AlertProvider */}
+          <div id="parent">
+            <Navbar />
+            <Alert /> {/* Use the Alert component */}
+            <SocialIcons></SocialIcons>
+            <Routes>
+              <Route exact path="/" element={<Home></Home>} />
+              <Route exact path="/home" element={<Home></Home>} />
+              <Route exact path="/productView" element={<Product></Product>} />
+              <Route exact path="/search" element={<Search></Search>} />
+              <Route exact path="/search" element={<Search></Search>} />
+              <Route exact path="/admin/login" element={<Login></Login>} />
+              <Route exact path="/admin/signup" element={<Signup></Signup>} />
+              <Route exact path="/admin/*" element={<Admin> </Admin>} />
+            </Routes>
+            <Footer />
+          </div>
+        </AlertProvider>
         <Scroll />
       </Router>
     </ProductState>

@@ -6,14 +6,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "../css/admin.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Admin(props) {
+export default function Admin() {
   const navigate = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/admin/login");
     }
   }, [navigate]);
-  const { showAlert } = props;
 
   return (
     <>
@@ -23,20 +22,16 @@ export default function Admin(props) {
         </div>
         <div className="right">
           <Routes>
-            <Route
-              exact
-              path="/"
-              element={<ViewProduct showAlert={showAlert}></ViewProduct>}
-            />{" "}
+            <Route exact path="/" element={<ViewProduct></ViewProduct>} />{" "}
             <Route
               exact
               path="/viewProduct"
-              element={<ViewProduct showAlert={showAlert}></ViewProduct>}
+              element={<ViewProduct></ViewProduct>}
             />{" "}
             <Route
               exact
               path="/addProduct"
-              element={<AddProduct showAlert={showAlert}></AddProduct>}
+              element={<AddProduct></AddProduct>}
             />{" "}
           </Routes>
         </div>

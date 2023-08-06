@@ -1,58 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../css/product.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Product() {
+  const location = useLocation();
+  const productData = location.state?.product;
+  const navigate = useNavigate(); // Use useNavigate for navigation
+
+  function formatUTCDate(utcDateString) {
+    const date = new Date(utcDateString);
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    };
+    return date.toLocaleString("en-US", options);
+  }
+
+  useEffect(() => {
+    if (!productData) {
+      // Redirect to the last page if productData is not available
+      navigate(-1);
+    }
+  }, [navigate, productData]);
+
+  if (!productData) {
+    return null;
+  }
+
   return (
     <>
       <div className="wrapper">
         <div className="content-wrapper">
           <div className="content">
             <div className="info">
+              {/* Display the product data here */}
               <div className="block published">
                 <div className="mini-title">Published</div>
-                10/08/2022
+                {productData.date}
               </div>
               <div className="block published">
-                <div className="mini-title">Views</div>359
+                <div className="mini-title">Views</div>
+                12
               </div>
               <div className="block published">
                 <div className="mini-title">Downloads</div>
-                156
+                12
               </div>
               <div className="block published">
                 <div className="mini-title">Likes</div>
-                56
+                12
               </div>
             </div>
             <div>
               <div className="words">
-                <h1>Heading</h1>
+                <h1>{productData.name}</h1>
                 <img
-                  src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
-                  alt="some "
+                  src={productData.imageURL}
+                  alt="Product Image"
                   style={{ width: "100%" }}
                 />
-                <p>Description</p>
+                <p>{productData.desc}</p>
+                {/* Display other product data here */}
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Similique nostrum ea soluta est fugiat vel adipisci, debitis
-                  temporibus quasi recusandae reprehenderit impedit culpa saepe
-                  aspernatur possimus sequi praesentium eum quia!
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Repudiandae error perspiciatis voluptas consequatur delectus
-                  aperiam nihil ratione nostrum amet impedit debitis, culpa
-                  veniam illo nemo velit. Velit excepturi repellat iste. Enim,
-                  accusamus voluptatibus. Nam est facere ea nemo soluta autem
-                  corporis tempora maxime deleniti, quas recusandae minima
-                  exercitationem incidunt qui, velit inventore doloremque
-                  excepturi! Nesciunt fugiat eaque eveniet numquam eius?
-                </p>
-
-                <p>
-                  Date: 17th February 2023 <br /> Coordinator: Smt. S.S.Sant and
-                  Smt. N.R.Wagh. <br /> Participants: All department
+                  Date: {productData.date} <br />
                 </p>
                 <div className="buttons">
                   <div></div>

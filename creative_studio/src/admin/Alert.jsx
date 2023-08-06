@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "../css/alert.css";
+import { useAlert } from "../context/alert/AlertContext";
 
-export default function Alert(props) {
+export default function Alert() {
+  const { alert } = useAlert();
+
   return (
-    <>
-      {props.alert && (
-        <div className={`alert ${props.alert.type}`}>{props.alert.msg}</div>
-      )}
-    </>
+    <>{alert && <div className={`alert ${alert.type}`}>{alert.msg}</div>}</>
   );
 }

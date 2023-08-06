@@ -10,6 +10,7 @@ export default function Products() {
     fetchProduct();
     // eslint-disable-next-line
   }, []);
+
   return (
     <>
       <h2>Popular Picks of the week:</h2>

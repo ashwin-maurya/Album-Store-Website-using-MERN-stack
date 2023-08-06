@@ -2,12 +2,15 @@ import { React, useContext, useState, useEffect } from "react";
 import "../css/form.css";
 import ProductContext from "../context/product/productContext";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "../context/alert/AlertContext";
 
-export default function AddProduct(props) {
-  const navigate = useNavigate();
-
+export default function AddProduct() {
+  const { showAlert } = useAlert();
   const context = useContext(ProductContext);
-  const { addProduct } = context;
+
+  const { success, setSuccess, addProduct } = context;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -31,15 +34,22 @@ export default function AddProduct(props) {
       product.price,
       product.imageURL
     );
-    props.showAlert("Item Added Succesfully", "success");
-    setProduct({
-      category: "general",
-      name: "",
-      desc: "",
-      price: "",
-      imageURL: "",
-    });
   };
+  useEffect(() => {
+    if (success === true) {
+      showAlert("Updated Successfully", "success");
+      setProduct({
+        category: "general",
+        name: "",
+        desc: "",
+        price: "",
+        imageURL: "",
+      });
+    }
+    setTimeout(() => {
+      setSuccess(false);
+    }, 10);
+  }, [success]);
   const onChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };

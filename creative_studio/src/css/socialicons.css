@@ -1,0 +1,45 @@
+.icon-bar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 999;
+    background-color: white;
+}
+
+.icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+.icon-bar a:hover {
+    transform: scale(1.2);
+}
+
+.facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.instagram {
+    background: #d62976;
+    color: white;
+}
+
+.whatsapp {
+    background: #58e672;
+    color: white;
+}
+
+.youtube {
+    background: #bb0000;
+    color: white;
+}

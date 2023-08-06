@@ -4,14 +4,15 @@ import "../css/content.css";
 import ProductCard from "./ProductCard";
 import ProductContext from "../context/product/productContext";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "../context/alert/AlertContext";
 
-export default function ViewProducts(props) {
+export default function ViewProducts() {
   const navigate = useNavigate();
-
+  const { showAlert } = useAlert();
   const [isModalOpen, setModalOpen] = useState(false);
   const context = useContext(ProductContext);
-  const { products, fetchProduct, updateProduct } = context;
-  const { showAlert } = props;
+  const { success, setSuccess, products, fetchProduct, updateProduct } =
+    context;
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -64,9 +65,18 @@ export default function ViewProducts(props) {
       product.uprice,
       product.uimageURL
     );
-    props.showAlert("Updated Successfully", "success");
+
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    if (success) {
+      showAlert("Updated Successfully", "success");
+    }
+    setTimeout(() => {
+      setSuccess(false);
+    }, 10);
+  }, [success]);
   const onChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };

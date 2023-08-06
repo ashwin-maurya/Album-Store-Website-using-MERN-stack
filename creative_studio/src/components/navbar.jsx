@@ -5,14 +5,89 @@ import menu from "../images/icons/menu.svg";
 import arrowDown from "../images/icons/chevron-down.svg";
 import arrowRight from "../images/icons/chevron-right.svg";
 import logo from "../images/home/web-logo.png";
+import { useNavigate } from "react-router-dom";
+import { useAlert } from "../context/alert/AlertContext";
 
 export default function Navbar() {
+  const { showAlert } = useAlert();
+
+  const navigate = useNavigate();
+
   const [isResponsive, setResponsive] = useState(false);
   let location = useLocation();
 
   function myFunction() {
     setResponsive((prevResponsive) => !prevResponsive);
   }
+
+  const getCompleteSearchText = (element) => {
+    if (element.tagName === "A") {
+      const nestedUl = element.querySelector("ul");
+      if (nestedUl) {
+        return element.textContent.trim();
+      } else {
+        let searchText = element.textContent;
+        let parentElement = element.parentElement;
+        while (parentElement) {
+          if (
+            parentElement.tagName === "UL" &&
+            parentElement.previousElementSibling
+          ) {
+            searchText =
+              parentElement.previousElementSibling.textContent +
+              " " +
+              searchText;
+          }
+          parentElement = parentElement.parentElement;
+        }
+        return searchText;
+      }
+    }
+    return "";
+  };
+
+  const handleClickLink = (event) => {
+    event.stopPropagation(); // Stop event propagation
+    if (event.target.tagName === "A") {
+      const searchText = getCompleteSearchText(event.target);
+      if (searchText !== "HOME") {
+        search(searchText);
+      }
+    }
+  };
+
+  const search = async (searchText) => {
+    try {
+      const response = await fetch(`/api/product/search/?q=${searchText}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const json = await response.json();
+      if (Object.keys(json).length === 0) {
+        showAlert("No search result found.", "failed");
+      } else {
+        navigate("/search", {
+          state: { results: json, searchText: searchText },
+          replace: true,
+        });
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 500) {
+          alert("Internal Server Error. Please try again later.", "failed");
+        } else {
+          alert("An error occurred. Please try again later.", "failed");
+        }
+      } else {
+        alert(
+          "Network Error. Please check your internet connection.",
+          "failed"
+        );
+      }
+    }
+  };
   return (
     <>
       <div
@@ -21,7 +96,7 @@ export default function Navbar() {
         }`}
         id="myTopnav"
       >
-        <ul className="dropdown">
+        <ul className="dropdown" onClick={handleClickLink}>
           <li>
             <img src={logo} alt="logo" className="main-logo" height="40px" />
           </li>
@@ -35,50 +110,164 @@ export default function Navbar() {
           </li>
           <li>
             <Link>
-              ALBUM COVERS
+              ALBUM
               <img src={arrowDown} alt="" />
             </Link>
             <ul>
               <li>
-                <Link to="/">
+                <Link>
                   Wedding Album Psd design
                   <img src={arrowRight} alt="" />
                 </Link>
                 <ul>
                   <li>
-                    <Link to="/">Size 12×40</Link>
+                    <Link>Size 12×36</Link>
                   </li>
                   <li>
-                    <Link to="/">12×18</Link>
+                    <Link>12×30</Link>
                   </li>
                   <li>
-                    <Link to="/">14×36</Link>
+                    <Link>14×40</Link>
                   </li>
                   <li>
-                    <Link to="/">15×30</Link>
+                    <Link>8×24</Link>
                   </li>
                   <li>
-                    <Link to="/">12×30</Link>
+                    <Link>18×24</Link>
                   </li>
                   <li>
-                    <Link to="/">18×24</Link>
+                    <Link>16×24</Link>
+                  </li>
+                  <li>
+                    <Link>8×24</Link>
+                  </li>
+                  <li>
+                    <Link>8×12</Link>
                   </li>
                 </ul>
               </li>
               <li>
-                <Link to="/">DM Wedding</Link>
+                <Link>
+                  DM Wedding <img src={arrowRight} alt="" />
+                </Link>
+
+                <ul>
+                  <li>
+                    <Link>Size 12×36</Link>
+                  </li>
+                  <li>
+                    <Link>12×30</Link>
+                  </li>
+                  <li>
+                    <Link>14×40</Link>
+                  </li>
+                  <li>
+                    <Link>8×24</Link>
+                  </li>
+                  <li>
+                    <Link>18×24</Link>
+                  </li>
+                  <li>
+                    <Link>16×24</Link>
+                  </li>
+                  <li>
+                    <Link>8×24</Link>
+                  </li>
+                  <li>
+                    <Link>8×12</Link>
+                  </li>
+                </ul>
               </li>
               <li>
-                <Link>Pre Wedding psd</Link>
+                <Link>
+                  Pre Wedding psd <img src={arrowRight} alt="" />
+                </Link>
+                <ul>
+                  <li>
+                    <Link>Size 12×36</Link>
+                  </li>
+                  <li>
+                    <Link>14×40</Link>
+                  </li>
+                  <li>
+                    <Link>18×24</Link>
+                  </li>
+                  <li>
+                    <Link>16×24</Link>
+                  </li>
+                </ul>
               </li>
               <li>
-                <Link to="/">Wedding Album Cover</Link>
+                <Link>
+                  Wedding Album Cover <img src={arrowRight} alt="" />
+                </Link>
+                <ul>
+                  <li>
+                    <Link>Size 12×36</Link>
+                  </li>
+                  <li>
+                    <Link>8×24</Link>
+                  </li>
+                  <li>
+                    <Link>18×24</Link>
+                  </li>
+                  <li>
+                    <Link>16×24</Link>
+                  </li>
+                </ul>
               </li>
               <li>
-                <Link to="/">Birthday album PSD </Link>
+                <Link>
+                  Birthday album PSD
+                  <img src={arrowRight} alt="" />
+                </Link>
+                <ul>
+                  <li>
+                    <Link>Size 12×36</Link>
+                  </li>
+                  <li>
+                    <Link>12×30</Link>
+                  </li>
+                  <li>
+                    <Link>14×40</Link>
+                  </li>
+                  <li>
+                    <Link>8×24</Link>
+                  </li>
+                  <li>
+                    <Link>18×24</Link>
+                  </li>
+                  <li>
+                    <Link>16×24</Link>
+                  </li>
+                  <li>
+                    <Link>8×24</Link>
+                  </li>
+                  <li>
+                    <Link>8×12</Link>
+                  </li>
+                </ul>
               </li>
               <li>
-                <Link to="/"> Vidhi Font</Link>
+                <Link>
+                  {" "}
+                  Font
+                  <img src={arrowRight} alt="" />
+                </Link>
+                <ul>
+                  <li>
+                    <Link>Haldi</Link>
+                  </li>
+                  <li>
+                    <Link>Wedding</Link>
+                  </li>
+                  <li>
+                    <Link>Pre wedding</Link>
+                  </li>
+                  <li>
+                    <Link>Vidhi</Link>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
@@ -90,51 +279,47 @@ export default function Navbar() {
 
             <ul>
               <li>
-                <Link to="/">Dvd Sticker</Link>
+                <Link>Clipart</Link>
               </li>
               <li>
-                <Link to="/">Clipart</Link>
+                <Link>Death Frames</Link>
               </li>
               <li>
-                <Link to="/">Death Frames</Link>
+                <Link>Font</Link>
+              </li>
+
+              <li>
+                <Link>Gradients</Link>
               </li>
               <li>
-                <Link to="/">Font</Link>
+                <Link>Overlay</Link>
               </li>
               <li>
-                <Link to="/">Lightroom Preset</Link>
+                <Link>Photo Color Luts</Link>
               </li>
               <li>
-                <Link to="/">Gradients</Link>
+                <Link>Masks</Link>
               </li>
               <li>
-                <Link to="/">Overlay</Link>
+                <Link>Mockup</Link>
+              </li>
+
+              <li>
+                <Link>Invitation PSD</Link>
               </li>
               <li>
-                <Link to="/">Photo Color Luts</Link>
+                <Link>Shapes</Link>
               </li>
               <li>
-                <Link to="/">Masks</Link>
+                <Link>Poster</Link>
               </li>
               <li>
-                <Link to="/">Mockup</Link>
-              </li>
-              <li>
-                <Link to="/">Photoshop Action</Link>
-              </li>
-              <li>
-                <Link to="/">Invitation PSD</Link>
-              </li>
-              <li>
-                <Link to="/">Shapes</Link>
-              </li>
-              <li>
-                <Link to="/">Poster</Link>
-              </li>
-              <li>
-                <Link to="/">Font Text Style</Link>
+                <Link>Font Text Style</Link>
               </li>
             </ul>
+          </li>
+          <li>
+            <Link>Lightroom Preset</Link>
           </li>
         </ul>
 

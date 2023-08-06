@@ -43,7 +43,13 @@
     margin-bottom: 10px;
 }
 
+.card * {
+    margin: 0;
+    padding: 0;
+}
+
 .card img {
+    max-height: 350px !important;
     width: 40%;
 }
 
@@ -61,6 +67,28 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.card .card-head h3 {
+    color: rgb(255, 102, 0);
+    padding: 10px;
+}
+
+.card .card-classification {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .card-main p {
+    margin: 10px 0;
+}
+
+.card .home-slide-buttons {
+    margin-top: 20px;
+    padding: 10px 16px;
+    margin-right: 20px;
 }
 
 @media screen and (max-width: 600px) {
