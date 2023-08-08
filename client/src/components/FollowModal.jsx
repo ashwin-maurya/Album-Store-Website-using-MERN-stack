@@ -10,7 +10,6 @@ function FollowModal() {
     const hasVisited = document.cookie.get("hasVisited");
 
     if (!hasVisited) {
-      // Show the modal if the user hasn't visited before
       setShowModal(true);
 
       // Set the cookie to expire after 24 hours
