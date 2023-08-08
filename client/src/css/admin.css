@@ -1,0 +1,17 @@
+.cont {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.cont .left {
+    width: 23%;
+}
+
+.cont .right {
+    width: 75%;
+}
+
+.hide {
+    display: none;
+}

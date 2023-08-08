@@ -14,11 +14,19 @@ const ProductSchema = new Schema({
         type: String,
         require: true
     },
+    size: {
+        type: String,
+        require: true
+    },
     price: {
         type: String,
         require: true
     },
-    imageURL: {
+    imageURLs: {
+        type: [String],
+        require: true
+    },
+    downloadUrl: {
         type: String,
         require: true
     },

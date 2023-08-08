@@ -1,0 +1,566 @@
+.uploadForm {
+    margin-bottom: 50px;
+}
+
+form {
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column !important;
+    margin: auto;
+}
+
+h4 {
+    font-family: 'Roboto', sans-serif, 'arial';
+    font-weight: 400;
+    font-size: 20px;
+    color: #9b9b9b;
+    line-height: 1.5;
+}
+
+
+/* ///// form inputs /////*/
+
+form input:focus~label,
+form textarea:focus~label,
+form input:valid~label,
+form textarea:valid~label {
+    font-size: 0.75em;
+    color: #999;
+    top: -5px;
+    -webkit-transition: all 0.225s ease;
+    transition: all 0.225s ease;
+}
+
+.styled-form input {
+    float: left;
+    width: 100%;
+    margin: 1rem 0;
+    position: relative;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 768px) {
+    .styled-form input {
+        width: 100%;
+    }
+}
+
+.styled-form input label {
+    color: #999;
+    padding: 1.3rem 30px 1rem 30px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    pointer-events: none;
+}
+
+.styled-form input.wide {
+    max-width: 100%;
+}
+
+form input,
+form textarea {
+    border: 0;
+    width: 100%;
+    font-size: 1rem;
+    color: white;
+    border-radius: 4px;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: 0;
+}
+
+form input:focus~span,
+form textarea:focus~span {
+    width: 100%;
+    -webkit-transition: all 0.075s ease;
+    transition: all 0.075s ease;
+}
+
+form textarea {
+    width: 100%;
+}
+
+.form input-container label {
+    margin: 0;
+}
+
+.form input-container {
+    max-width: 100%;
+    margin: 20px auto 25px auto;
+}
+
+.submit-btn {
+    float: right;
+    padding: 7px 35px;
+    border-radius: 6px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 2px 10px 0 rgba(0, 0, 0, 0.07);
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(1px);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.10), 0 1px 1px 0 rgba(0, 0, 0, 0.09);
+}
+
+@media (max-width: 768px) {
+    .submit-btn {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+}
+
+form input[type=checkbox]+label {
+    color: #ccc;
+    font-style: italic;
+}
+
+form input[type=checkbox]:checked+label {
+    color: #f00;
+    font-style: normal;
+}
+
+
+/* form button */
+
+form input[type="submit"],
+form input[type="reset"],
+form input[type="form button"],
+.btn-sumbit,
+form button,
+.form button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    -webkit-transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    -ms-transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    background-color: transparent;
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(160, 160, 160, 0.3);
+    color: #3c3b3b !important;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Raleway", Helvetica, sans-serif;
+    font-size: 0.6em;
+    font-weight: 800;
+    height: 4.8125em;
+    letter-spacing: 0.25em;
+    line-height: 4.8125em;
+    padding: 0 2.5em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+form input[type="submit"]:hover,
+form input[type="reset"]:hover,
+form input[type="form button"]:hover,
+form button:hover,
+.btn-sumbit,
+.form button:hover {
+    box-shadow: inset 0 0 0 1px #2ebaae;
+    color: #2ebaae !important;
+}
+
+form input[type="submit"]:hover:active,
+form input[type="reset"]:hover:active,
+form input[type="form button"]:hover:active,
+btn-sumbit,
+form button:hover:active,
+.form button:hover:active {
+    background-color: rgba(46, 186, 174, 0.05);
+}
+
+form input[type="submit"]:before,
+form input[type="submit"]:after,
+form input[type="reset"]:before,
+form input[type="reset"]:after,
+form input[type="form button"]:before,
+form input[type="form button"]:after,
+form button:before,
+btn-sumbit,
+form button:after,
+.form button:before,
+.form button:after {
+    color: #aaaaaa;
+    position: relative;
+}
+
+form input[type="submit"]:before,
+form input[type="reset"]:before,
+form input[type="form button"]:before,
+btn-sumbit,
+form button:before,
+.form button:before {
+    left: -1em;
+    padding: 0 0 0 0.75em;
+}
+
+form input[type="submit"]:after,
+form input[type="reset"]:after,
+form input[type="form button"]:after,
+btn-sumbit,
+form button:after,
+.form button:after {
+    left: 1em;
+    padding: 0 0.75em 0 0;
+}
+
+form input[type="submit"].fit,
+form input[type="reset"].fit,
+form input[type="form button"].fit,
+form button.fit,
+btn-sumbit,
+.form button.fit {
+    width: 100%;
+}
+
+form input[type="submit"].large,
+form input[type="reset"].large,
+form input[type="form button"].large,
+form button.large,
+.form button.large {
+    font-size: 0.7em;
+    padding: 0 3em;
+}
+
+form input[type="submit"].small,
+form input[type="reset"].small,
+form input[type="form button"].small,
+form button.small,
+.form button.small {
+    font-size: 0.5em;
+}
+
+form input[type="submit"].disabled,
+form input[type="submit"]:disabled,
+form input[type="reset"].disabled,
+form input[type="reset"]:disabled,
+form input[type="form button"].disabled,
+form input[type="form button"]:disabled,
+form button.disabled,
+form button:disabled,
+.form button.disabled,
+.form button:disabled {
+    pointer-events: none;
+    color: rgba(160, 160, 160, 0.3) !important;
+}
+
+form input[type="submit"].disabled:before,
+form input[type="submit"]:disabled:before,
+form input[type="reset"].disabled:before,
+form input[type="reset"]:disabled:before,
+form input[type="form button"].disabled:before,
+form input[type="form button"]:disabled:before,
+form button.disabled:before,
+form button:disabled:before,
+.form button.disabled:before,
+.form button:disabled:before {
+    color: rgba(160, 160, 160, 0.3) !important;
+}
+
+
+/* Form */
+
+form.search {
+    text-decoration: none;
+    position: relative;
+}
+
+form.search:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    text-transform: none !important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+form.search:before {
+    color: #aaaaaa;
+    content: '\f002';
+    display: block;
+    height: 2.75em;
+    left: 0;
+    line-height: 2.75em;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 2.5em;
+}
+
+form.search>form input:first-child {
+    padding-left: 2.5em;
+}
+
+label {
+    color: #3c3b3b;
+    display: block;
+    font-size: 0.9em;
+    font-weight: 700;
+    margin: 0 0 1em 0;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="time"],
+form input[type="password"],
+form input[type="email"],
+form input[type="number"],
+form input[type="file"],
+form input[type="tel"],
+form select,
+form textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background: rgba(160, 160, 160, 0.075);
+    border: none;
+    border: solid 1px rgba(160, 160, 160, 0.3);
+    border-radius: 0;
+    color: inherit;
+    display: block;
+    outline: 0;
+    padding: 0 1em;
+    text-decoration: none;
+    width: 100%;
+}
+
+form input[type="text"]:invalid,
+form input[type="password"]:invalid,
+form input[type="email"]:invalid,
+form input[type="tel"]:invalid,
+form input[type="number"]:invalid,
+form input[type="file"]:invalid,
+form select:invalid,
+form textarea:invalid {
+    box-shadow: none;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="email"]:focus,
+form input[type="number"]:focus,
+form input[type="tel"]:focus,
+form input[type="file"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #2ebaae;
+    box-shadow: inset 0 0 0 1px #2ebaae;
+}
+
+.select-wrapper {
+    text-decoration: none;
+    display: block;
+    position: relative;
+}
+
+.select-wrapper:before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    text-transform: none !important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.select-wrapper:before {
+    color: rgba(160, 160, 160, 0.3);
+    content: '\f078';
+    display: block;
+    height: 2.75em;
+    line-height: 2.75em;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 2.75em;
+}
+
+.select-wrapper select::-ms-expand {
+    display: none;
+}
+
+form select {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='rgba(160, 160, 160, 0.3)' /%3E%3C/svg%3E");
+    background-size: 1.25rem;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1rem) center;
+    height: 2.75em;
+    padding-right: 2.75em;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+form select option {
+    color: #3c3b3b;
+    background: #ffffff;
+    border-radius: 0;
+    padding: 10px;
+}
+
+form select:focus::-ms-value {
+    background-color: transparent;
+}
+
+form select::-ms-expand {
+    display: none;
+}
+
+form input[type="file"] {
+    padding: 9px;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="time"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="email"],
+form input[type="number"],
+form input[type="file"],
+form select {
+    height: 2.75em;
+}
+
+
+/* Disable increment form button */
+
+form textarea {
+    padding: 0.75em 1em;
+}
+
+form input[type="checkbox"],
+form input[type="radio"] {
+    appearance: none;
+    display: block;
+    float: left;
+    opacity: 0;
+}
+
+form input[type="checkbox"]+label,
+form input[type="radio"]+label {
+    text-decoration: none;
+    color: #646464;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    padding-left: 2.4em;
+    padding-right: 0.75em;
+    position: relative;
+}
+
+form input[type="checkbox"]+label:before,
+form input[type="radio"]+label:before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    text-transform: none !important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+form input[type="checkbox"]+label:before,
+form input[type="radio"]+label:before {
+    background: rgba(160, 160, 160, 0.075);
+    border: solid 1px rgba(160, 160, 160, 0.3);
+    content: '';
+    display: inline-block;
+    font-size: 0.8em;
+    height: 2.0625em;
+    left: 0;
+    line-height: 2.0625em;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 2.0625em;
+}
+
+form input[type="checkbox"]:checked+label:before,
+form input[type="radio"]:checked+label:before {
+    background: #3c3b3b;
+    border-color: #3c3b3b;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '✓';
+}
+
+form input[type="checkbox"]:focus+label:before,
+form input[type="radio"]:focus+label:before {
+    border-color: #2ebaae;
+    box-shadow: 0 0 0 1px #2ebaae;
+}
+
+form input[type="radio"]+label:before {
+    border-radius: 100%;
+}
+
+
+/* Icon */
+
+.icon {
+    text-decoration: none;
+    border-bottom: none;
+    position: relative;
+}
+
+.icon:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    text-transform: none !important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400;
+}
+
+.icon>.label {
+    display: none;
+}
+
+.icon:before {
+    line-height: inherit;
+}
+
+.icon.solid:before {
+    font-weight: 900;
+}
+
+.icon.brands:before {
+    font-family: 'Font Awesome 5 Brands';
+}
+
+.icon.suffix:before {
+    float: right;
+}

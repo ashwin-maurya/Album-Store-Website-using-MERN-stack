@@ -1,0 +1,109 @@
+.row {
+    display: flex;
+    margin: 10px;
+}
+
+.leftcolumn {
+    float: left;
+    width: 75%;
+}
+
+.rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .leftcolumn,
+    .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+    .row {
+        flex-direction: column;
+    }
+    .s-card {
+        flex-wrap: nowrap;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+.card {
+    border: 1px solid #a4a4a4;
+    transition: 0.3s;
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    box-shadow: 4px 4px 0 #000;
+    /* transform: translate(-4px, -4px); */
+}
+
+.card * {
+    margin: 0;
+    padding: 0;
+}
+
+.card img {
+    max-height: 350px !important;
+    width: 40%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+    padding: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.card-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.card .card-head h3 {
+    color: rgb(255, 102, 0);
+    padding: 10px;
+}
+
+.card .card-classification {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .card-main p {
+    margin: 10px 0;
+}
+
+.card .home-slide-buttons {
+    margin-top: 20px;
+    padding: 10px 16px;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        flex-direction: column;
+    }
+    .card img {
+        width: 100%;
+    }
+    .card-content {
+        width: 93%;
+    }
+}
