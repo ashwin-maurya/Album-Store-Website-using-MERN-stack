@@ -1,22 +1,22 @@
-.icon-bar {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    z-index: 999;
+.icon-bar-horizontal {
     background-color: white;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
-.icon-bar a {
+.icon-bar-horizontal a {
     display: block;
     text-align: center;
-    padding: 15px;
+    padding: 10px 0;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
+    width: 100%;
+    transition: .2s;
 }
 
-.icon-bar a:hover {
-    transform: scale(1.2);
+.icon-bar-horizontal a:hover {
+    background-color: black;
 }
 
 .facebook {
@@ -42,10 +42,4 @@
 .youtube {
     background: #bb0000;
     color: white;
-}
-
-@media screen and (max-width: 600px) {
-    .icon-bar {
-        display: none;
-    }
 }

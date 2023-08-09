@@ -5,7 +5,6 @@ import ViewProduct from "./ViewProduct";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "../css/admin.css";
 import { useNavigate } from "react-router-dom";
-import Search from "./Search";
 export default function Admin() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -33,7 +32,6 @@ export default function Admin() {
               path="/addProduct"
               element={<AddProduct></AddProduct>}
             />{" "}
-            <Route exact path="/search" element={<Search></Search>} />{" "}
           </Routes>
         </div>
       </div>

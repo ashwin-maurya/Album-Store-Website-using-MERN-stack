@@ -6,6 +6,7 @@ import ProductContext from "../context/product/productContext";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../context/alert/AlertContext";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loader from "../components/Loader";
 
 export default function ViewProducts() {
   const navigate = useNavigate();
@@ -21,7 +22,6 @@ export default function ViewProducts() {
     updateProduct,
     fetchProduct,
     page,
-    setProducts,
     hasMore,
     setHasMore,
     products,
@@ -46,7 +46,7 @@ export default function ViewProducts() {
     setTimeout(() => {
       setSuccess(false);
     }, 10);
-  }, [success, showAlert]);
+  }, [success, setSuccess, showAlert]);
 
   const fetchMoreProducts = () => {
     if (page < totalPages) {
@@ -144,7 +144,7 @@ export default function ViewProducts() {
     setTimeout(() => {
       setSuccess(false);
     }, 10);
-  }, [success]);
+  }, [success, setSuccess, showAlert]);
 
   const onChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
@@ -156,9 +156,7 @@ export default function ViewProducts() {
     setSearchText(e.target.value);
     search();
   };
-  const search = async (e) => {
-    console.log("call");
-    // e.preventDefault();
+  const search = async () => {
     try {
       const response = await fetch(`/api/product/search/?q=${searchText}`, {
         method: "GET",
@@ -170,8 +168,6 @@ export default function ViewProducts() {
       if (Object.keys(json).length === 0) {
         showAlert("No search result found.", "failed");
       } else {
-        console.log(json);
-
         setsearchResult(json);
       }
     } catch (error) {
@@ -211,8 +207,9 @@ export default function ViewProducts() {
                 value={product.ucategory}
               >
                 <option value="general">General</option>
-                <option value="album">Album</option>
-                <option value="clipart">Clipart</option>
+                <option value="Album">Album</option>
+                <option value="Photoshop">Photoshop</option>
+                <option value="Lightroom Preset">Lightroom Preset</option>
               </select>
               <br />
               <label htmlFor="name">Product Name:</label>
@@ -335,11 +332,11 @@ export default function ViewProducts() {
         <InfiniteScroll
           dataLength={products.length}
           hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
+          loader={<Loader />}
           next={fetchMoreProducts}
-          endMessage={"END"}
+          endMessage={<h4>NO MORE PRODUCTS</h4>}
         >
-          <div>
+          <div className="infinite-cards">
             {products.map((product, index) => (
               <ProductCard
                 openModal={openModal}

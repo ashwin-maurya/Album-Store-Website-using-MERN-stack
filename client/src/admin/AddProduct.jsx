@@ -83,14 +83,18 @@ export default function AddProduct() {
     setTimeout(() => {
       setSuccess(false);
     }, 10);
-  }, [success]);
+  }, [success, showAlert, numImages, setSuccess]);
   const onChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="uploadForm">
+      <form
+        onSubmit={handleSubmit}
+        className="uploadForm"
+        style={{ paddingBottom: "50px" }}
+      >
         <h2>Fill Product Details</h2>
         <label htmlFor="category">Category:</label>
         <select
@@ -100,8 +104,9 @@ export default function AddProduct() {
           defaultValue="general"
         >
           <option value="general">General</option>
-          <option value="album">Album</option>
-          <option value="clipart">Clipart</option>
+          <option value="Album">Album</option>
+          <option value="Photoshop">Photoshop</option>
+          <option value="Lightroom Preset">Lightroom Preset</option>
         </select>
         <br />
         <label htmlFor="name">Product Name:</label>

@@ -67,7 +67,6 @@ const ProductState = (props) => {
         }),
       });
       const { success, product } = await response.json();
-      console.log(response.status);
 
       if (success) {
         setProducts(products.concat(product));

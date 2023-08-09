@@ -2,7 +2,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./css/body.css";
-import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Product from "./components/ProductPage";
@@ -17,6 +16,9 @@ import Signup from "./admin/Signup";
 import Alert from "./admin/Alert"; // Import the Alert component
 import SocialIcons from "./components/SocialIcons";
 import FollowModal from "./components/FollowModal";
+import Privacy from "./components/Privacy";
+import TermsCondition from "./components/TermsCondition";
+import Disclaimer from "./components/Disclaimer";
 const App = () => {
   return (
     <ProductState>
@@ -34,7 +36,17 @@ const App = () => {
               <Route exact path="/home" element={<Home></Home>} />
               <Route exact path="/productView" element={<Product></Product>} />
               <Route exact path="/search" element={<Search></Search>} />
-              <Route exact path="/search" element={<Search></Search>} />
+              <Route exact path="/privacy" element={<Privacy></Privacy>} />
+              <Route
+                exact
+                path="/terms"
+                element={<TermsCondition></TermsCondition>}
+              />
+              <Route
+                exact
+                path="/disclaimer"
+                element={<Disclaimer></Disclaimer>}
+              />
               <Route exact path="/admin/login" element={<Login></Login>} />
               <Route exact path="/admin/signup" element={<Signup></Signup>} />
               <Route exact path="/admin/*" element={<Admin> </Admin>} />

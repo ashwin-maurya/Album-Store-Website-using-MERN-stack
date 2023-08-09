@@ -6,6 +6,7 @@ import Categories from "./Categories";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../context/alert/AlertContext";
 import logo from "../images/home/web-logo.png";
+import SocialIconsHorizontal from "./SocialIconsHorizontal";
 
 export default function Home() {
   const { showAlert } = useAlert();
@@ -28,7 +29,6 @@ export default function Home() {
       if (Object.keys(json).length === 0) {
         showAlert("No search result found.", "failed");
       } else {
-        console.log(json);
         navigate("/search", {
           state: { results: json, searchText: searchText },
           replace: true,
@@ -54,12 +54,14 @@ export default function Home() {
   return (
     <>
       <div className="main-home-search">
+        <img
+          src={logo}
+          alt="logo"
+          className="main-logo-bannner"
+          style={{ float: "left" }}
+        />
         <div className="home-menu-content">
-          <div className="logo">
-            <img src={logo} alt="logo" className="main-logo" height="150px" />
-            ALBUM PIXEL
-            <img src={logo} alt="logo" className="main-logo" height="150px" />
-          </div>
+          <div className="logo">ALBUM PIXEL</div>
 
           <div className="search">
             <input
@@ -76,7 +78,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      <SocialIconsHorizontal />
       <div className="row">
         <div className="leftcolumn">
           <Products></Products>

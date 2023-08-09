@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from "react";
-import Modal from "react-modal";
-// import Cookies from "react-cookie";
-
+import Cookies from "universal-cookie";
+import Modal from "./Modal";
 function FollowModal() {
   const [showModal, setShowModal] = useState(false);
+  const cookies = new Cookies();
 
   useEffect(() => {
-    // Check if the user has visited the page before
-    const hasVisited = document.cookie.get("hasVisited");
+    const hasVisited = cookies.get("hasVisited");
 
     if (!hasVisited) {
       setShowModal(true);
 
-      // Set the cookie to expire after 24 hours
-      Cookies.set("hasVisited", "true", { expires: 1 }); // Expires in 1 day
+      cookies.set(
+        "hasVisited",
+        "true",
+        { path: "/" },
+        { expires: new Date(Date.now() + 2592000) }
+      ); // Expires in 1 day
     }
   }, []);
 
   const closeModal = () => {
+    // Close the modal
     setShowModal(false);
   };
 
   return (
-    <Modal
-      isOpen={showModal}
-      onRequestClose={closeModal}
-      contentLabel="Welcome Modal"
-    >
-      <h2>Welcome to Our Website!</h2>
-      <p>This is your first visit. Enjoy your stay!</p>
-      <button onClick={closeModal}>Close</button>
-    </Modal>
+    <>
+      {showModal && (
+        <Modal closeModal={closeModal} contentLabel="Welcome Modal"></Modal>
+      )}
+    </>
   );
 }
 

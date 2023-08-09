@@ -13,12 +13,12 @@ export default function Search() {
       // Redirect to the last page if productData is not available
       navigate(-1);
     }
-  }, [navigate]);
+  }, [navigate, searchResults]);
   useEffect(() => {
     if (location.state?.results) {
       setSearchResults(location.state.results);
     }
-  }, [location.state]);
+  }, [location.state, searchResults]);
 
   return (
     <div className="App">

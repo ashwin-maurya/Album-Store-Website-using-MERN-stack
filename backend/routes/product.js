@@ -4,6 +4,9 @@ const fetchuser = require('../middleware/fetchuser');
 const Product = require('../models/Product');
 const { body, validationResult } = require('express-validator');
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 //ROUTE 1:: Get all the products using GET "/api/product/getproducts". Login required
 router.get('/fetchproducts', async(req, res) => {
     let success = false;
@@ -64,7 +67,8 @@ router.post('/addproducts', fetchuser, [
             size,
             price,
             imageURLs,
-            downloadUrl
+            downloads: getRandomInt(150, 200), // Generate and store random downloads count
+            downloadUrl,
         })
         const savedProduct = await product.save()
         success = true;
@@ -136,6 +140,7 @@ router.get('/search', async(req, res) => {
             $or: [
                 { name: { $regex: query, $options: 'i' } },
                 { category: { $regex: query, $options: 'i' } },
+                { size: { $regex: query, $options: 'i' } },
             ],
         });
 

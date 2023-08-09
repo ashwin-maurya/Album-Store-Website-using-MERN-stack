@@ -6,6 +6,7 @@
 .leftcolumn {
     float: left;
     width: 75%;
+    overflow: scroll;
 }
 
 .rightcolumn {
@@ -34,11 +35,10 @@
     }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 .card {
     border: 1px solid #a4a4a4;
     transition: 0.3s;
-    width: 100%;
+    width: 99%;
     display: flex;
     margin-bottom: 10px;
 }
@@ -99,11 +99,28 @@
 @media screen and (max-width: 600px) {
     .card {
         flex-direction: column;
+        width: 96%;
     }
     .card img {
         width: 100%;
     }
     .card-content {
         width: 93%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card-head h2 {
+        font-size: 20px;
+    }
+    .card .card-classification {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .card .card-classification h4 {
+        font-size: 18px;
+    }
+    .card-main p {
+        display: none;
     }
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../css/Footer.css";
 import logo from "../images/home/web-logo.png";
 import { Link, useLocation } from "react-router-dom";
-
+import SocialIconsHorizontal from "./SocialIconsHorizontal";
 export default function Footer() {
   let location = useLocation();
   useEffect(() => {}, [location]);
@@ -13,6 +13,7 @@ export default function Footer() {
           location.pathname.includes("/admin") ? "hide" : ""
         }`}
       >
+        <SocialIconsHorizontal />
         <div className="footer-wrap">
           <section id="intro">
             <img src={logo} alt="logo" className="main-logo" height="100px" />
@@ -21,16 +22,15 @@ export default function Footer() {
               <h2>ALBUM PIXEL PSD</h2>
             </header>
           </section>{" "}
-          <ul className="social-list">
-            <div className="shareon">
-              <a className="facebook"></a>
-              <a className="linkedin"></a>
-              <a className="telegram"></a>
-              <a className="pinterest"></a>
-              <a className="whatsapp"></a>
+          <div className="copyrights">
+            <p className="copy">Copyright © 2023 ALBUM PIXEL PSD</p>
+            <div className="copy-menu">
+              <Link to="/home">Home</Link>
+              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms">Terms and Condition</Link>
+              <Link to="/disclaimer">Disclaimer</Link>
             </div>
-          </ul>
-          <p className="copyrights">Copyright © 2023 ALBUM PIXEL.</p>
+          </div>
         </div>
       </footer>
     </>

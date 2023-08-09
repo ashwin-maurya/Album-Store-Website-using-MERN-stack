@@ -11,7 +11,6 @@ form {
 }
 
 h4 {
-    font-family: 'Roboto', sans-serif, 'arial';
     font-weight: 400;
     font-size: 20px;
     color: #9b9b9b;
@@ -154,7 +153,6 @@ form button,
     color: #3c3b3b !important;
     cursor: pointer;
     display: inline-block;
-    font-family: "Raleway", Helvetica, sans-serif;
     font-size: 0.6em;
     font-weight: 800;
     height: 4.8125em;
@@ -291,7 +289,6 @@ form.search:before {
     text-rendering: auto;
     line-height: 1;
     text-transform: none !important;
-    font-family: 'Font Awesome 5 Free';
     font-weight: 900;
 }
 
@@ -382,7 +379,6 @@ form textarea:focus {
     text-rendering: auto;
     line-height: 1;
     text-transform: none !important;
-    font-family: 'Font Awesome 5 Free';
     font-weight: 900;
 }
 
@@ -482,7 +478,6 @@ form input[type="radio"]+label:before {
     text-rendering: auto;
     line-height: 1;
     text-transform: none !important;
-    font-family: 'Font Awesome 5 Free';
     font-weight: 900;
 }
 
@@ -541,7 +536,6 @@ form input[type="radio"]+label:before {
     text-rendering: auto;
     line-height: 1;
     text-transform: none !important;
-    font-family: 'Font Awesome 5 Free';
     font-weight: 400;
 }
 
@@ -555,10 +549,6 @@ form input[type="radio"]+label:before {
 
 .icon.solid:before {
     font-weight: 900;
-}
-
-.icon.brands:before {
-    font-family: 'Font Awesome 5 Brands';
 }
 
 .icon.suffix:before {

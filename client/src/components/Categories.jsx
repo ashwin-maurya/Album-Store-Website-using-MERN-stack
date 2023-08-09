@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "../css/navbar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "../context/alert/AlertContext";
 
@@ -39,7 +39,6 @@ export default function Categories() {
     event.stopPropagation(); // Stop event propagation
     if (event.target.tagName === "A") {
       const searchText = getCompleteSearchText(event.target);
-      console.log(searchText);
       if (searchText !== "HOME") {
         search(searchText);
       }
@@ -47,7 +46,6 @@ export default function Categories() {
   };
 
   const search = async (searchText) => {
-    console.log(searchText);
     const response = await fetch(`/api/product/search/?q=${searchText}`, {
       method: "GET",
       headers: {
@@ -58,7 +56,6 @@ export default function Categories() {
     if (Object.keys(json).length === 0) {
       showAlert("No search result found.", "failed");
     } else {
-      console.log(json);
       navigate("/search", {
         state: { results: json, searchText: searchText },
         replace: true,

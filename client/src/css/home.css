@@ -9,6 +9,18 @@
     position: relative;
 }
 
+.main-logo-bannner {
+    position: absolute;
+    left: 50px;
+    height: 300px;
+}
+
+@media screen and (max-width:1100px) {
+    .main-logo-bannner {
+        display: none;
+    }
+}
+
 @media screen and (max-width:800px) {
     .main-home-search {
         flex-direction: column;
@@ -145,6 +157,35 @@
     box-shadow: 4px 4px 0 #000;
     background-color: var(--green);
     transform: translate(-4px, -4px);
+}
+
+.download-buttons {
+    outline: 0;
+    grid-gap: 8px;
+    align-items: center;
+    background-color: #cc4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 16px;
+    gap: 8px;
+    justify-content: center;
+    line-height: 1.5;
+    overflow: hidden;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all .14s ease-out;
+    white-space: nowrap;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.download-buttons:hover {
+    background-color: black;
 }
 
 .home-slide-buttons:focus-visible {

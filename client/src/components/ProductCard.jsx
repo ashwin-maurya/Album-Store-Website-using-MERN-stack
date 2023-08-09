@@ -9,9 +9,11 @@ export default function ProductCard(props) {
   if (
     !product ||
     !product.name ||
-    !product.price ||
+    !product.price === null ||
+    !product.size ||
     !product.category ||
     !product.desc ||
+    !product.downloadUrl ||
     !product.imageURLs
   ) {
     return null; // or display a default/fallback content, or an error message
@@ -40,13 +42,15 @@ export default function ProductCard(props) {
               {product.name.slice(0, 80) +
                 (product.name.length > 80 ? "..." : "")}
             </h2>
-            <h3>Rs.{product.price}</h3>
+            <h3>
+              <b>{product.price !== 0 ? "Rs." + product.price : "FREE"} </b>
+            </h3>
           </div>
           <div className="card-main">
             <div className="card-classification">
-              <h4>{product.category}</h4>
-              <h4>Size</h4>
-              <h4>{product.category}</h4>
+              <h4>Type: {product.category}</h4>
+              <h4>Size: {product.size}</h4>
+              <h4>Read: 1min</h4>
             </div>
             <p>
               {product.desc.slice(0, 250) +
@@ -57,7 +61,7 @@ export default function ProductCard(props) {
             </span>
           </div>
           <button className="home-slide-buttons" onClick={handleBuyNow}>
-            BUY NOW
+            VIEW MORE
           </button>
         </div>
       </div>

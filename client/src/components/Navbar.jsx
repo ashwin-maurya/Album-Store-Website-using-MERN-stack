@@ -98,7 +98,7 @@ export default function Navbar() {
       >
         <ul className="dropdown" onClick={handleClickLink}>
           <li>
-            <img src={logo} alt="logo" className="main-logo" height="40px" />
+            <img src={logo} alt="logo" className="main-logo" height="38px" />
           </li>
           <li>
             <Link
@@ -323,9 +323,9 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <Link className="icon" onClick={myFunction}>
+        <span className="icon" onClick={myFunction}>
           <img src={menu} alt="menu bars" />
-        </Link>
+        </span>
       </div>
       <div
         className={`contact-nav ${
@@ -334,13 +334,44 @@ export default function Navbar() {
       >
         <div className="left-nav-contact">
           <div className="shareon">
-            <Link className="facebook"></Link>
-            <Link className="telegram">JOIN GROUP</Link>
+            <a
+              href="https://www.facebook.com/weddingpixelpsd/"
+              target="_blank"
+              rel="noreferrer"
+              className="facebook"
+            >
+              Follow
+            </a>
+            <a
+              href="https://t.me/weddingpsdfile"
+              target="_blank"
+              rel="noreferrer"
+              className="telegram"
+            >
+              JOIN GROUP
+            </a>
           </div>
         </div>
         <div className="right-nav-contact">
-          <div className="shareon">
-            <Link className="whatsapp">BUY NOW</Link>
+          <div className="icon-bar-horizontal">
+            <a
+              href="https://t.me/weddingpsdfile"
+              target="_blank"
+              rel="noreferrer"
+              className="instagram"
+              style={{ padding: "10px 20px" }}
+            >
+              <i className="fa fa-instagram"></i>
+            </a>
+            <a
+              href="https://t.me/weddingpsdfile"
+              target="_blank"
+              rel="noreferrer"
+              className="youtube"
+              style={{ padding: "10px 20px" }}
+            >
+              <i className="fa fa-youtube-play"></i>
+            </a>
           </div>
         </div>
       </div>

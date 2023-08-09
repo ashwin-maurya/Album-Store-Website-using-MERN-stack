@@ -16,11 +16,11 @@ export default function ProductCard(props) {
     setTimeout(() => {
       setSuccess(false);
     }, 10);
-  }, [success]);
+  }, [success, setSuccess, showAlert]);
   if (
     !product ||
     !product.name ||
-    !product.price ||
+    !product.price === null ||
     !product.size ||
     !product.category ||
     !product.desc ||
