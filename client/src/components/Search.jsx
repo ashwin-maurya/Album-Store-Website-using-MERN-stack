@@ -8,12 +8,14 @@ export default function Search() {
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
   const location = useLocation();
+  const resultData = location.state?.results;
+  console.log("search");
+
   useEffect(() => {
-    if (!searchResults) {
-      // Redirect to the last page if productData is not available
+    if (!resultData) {
       navigate(-1);
     }
-  }, [navigate, searchResults]);
+  }, [navigate, resultData]);
   useEffect(() => {
     if (location.state?.results) {
       setSearchResults(location.state.results);

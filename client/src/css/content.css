@@ -6,7 +6,6 @@
 .leftcolumn {
     float: left;
     width: 75%;
-    overflow: scroll;
 }
 
 .rightcolumn {
@@ -41,6 +40,7 @@
     width: 99%;
     display: flex;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -81,7 +81,7 @@
 }
 
 .card .card-classification {
-    width: 70%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
 }
@@ -99,7 +99,7 @@
 @media screen and (max-width: 600px) {
     .card {
         flex-direction: column;
-        width: 96%;
+        width: 98.5%;
     }
     .card img {
         width: 100%;

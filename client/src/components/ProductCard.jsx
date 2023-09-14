@@ -33,7 +33,7 @@ export default function ProductCard(props) {
   };
   return (
     <>
-      <div className="card">
+      <div className="card" onClick={handleBuyNow}>
         <img src={product.imageURLs[0]} alt={product.name} />
 
         <div className="card-content">
@@ -60,9 +60,6 @@ export default function ProductCard(props) {
               <b>{formatUTCDate(product.date)}</b>
             </span>
           </div>
-          <button className="home-slide-buttons" onClick={handleBuyNow}>
-            VIEW MORE
-          </button>
         </div>
       </div>
     </>

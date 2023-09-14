@@ -7,7 +7,6 @@ const { body, validationResult } = require('express-validator');
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-//ROUTE 1:: Get all the products using GET "/api/product/getproducts". Login required
 router.get('/fetchproducts', async(req, res) => {
     let success = false;
     try {
@@ -18,7 +17,11 @@ router.get('/fetchproducts', async(req, res) => {
         const endIndex = page * limit;
 
         // Get products for the current page with the specified limit
-        const products = await Product.find().skip(startIndex).limit(limit).exec();
+        const products = await Product.find()
+            .sort({ _id: -1 }) // Sort in descending order based on _id (reverse order)
+            .skip(startIndex)
+            .limit(limit)
+            .exec();
 
         // Get the total number of products in the database
         const totalProducts = await Product.countDocuments().exec();
@@ -85,15 +88,15 @@ router.put('/updateproducts/:id', fetchuser, async(req, res) => {
     let success = false
     try {
 
-        const { category, name, desc, size, price, imageURLs, downloadUrl } = req.body
-
+        const { category, name, desc, size, price, uimageURLs, downloadUrl } = req.body
+        console.log(uimageURLs)
         const newProduct = {}
         if (category) { newProduct.category = category }
         if (name) { newProduct.name = name }
         if (desc) { newProduct.desc = desc }
         if (size) { newProduct.size = size }
         if (price) { newProduct.price = price }
-        if (imageURLs) { newProduct.imageURL = imageURLs }
+        if (uimageURLs) { newProduct.imageURLs = uimageURLs }
         if (downloadUrl) { newProduct.downloadUrl = downloadUrl }
 
         let product = await Product.findById(req.params.id)

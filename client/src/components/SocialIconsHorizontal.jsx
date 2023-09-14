@@ -30,7 +30,7 @@ export default function SocialIconsHorizontal() {
           </i>
         </a>
         <a
-          href="https://t.me/weddingpsdfile"
+          href="https://www.instagram.com/albumpixelpsd/"
           target="_blank"
           rel="noreferrer"
           className="instagram"
@@ -42,7 +42,7 @@ export default function SocialIconsHorizontal() {
           </i>
         </a>
         <a
-          href="https://t.me/weddingpsdfile"
+          href="https://www.youtube.com/@WeDDinGPiXeLPSD?sub_confirmation=1"
           target="_blank"
           rel="noreferrer"
           className="youtube"

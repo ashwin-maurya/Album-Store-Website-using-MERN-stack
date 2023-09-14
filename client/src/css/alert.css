@@ -6,7 +6,9 @@
     border-radius: 0.25rem;
     padding: 2rem;
     background: #333;
-    color: #000000;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 700;
     z-index: 999;
     box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);
     transition: all 0.2s ease-in-out;

@@ -102,14 +102,18 @@ export default function ViewProducts() {
 
   const handleNumImagesChange = (e) => {
     const num = parseInt(e.target.value);
-    if (!isNaN(num) && num >= 1 && num <= 10) {
+    if (!isNaN(num) && num >= 0 && num <= 10) {
       setProduct((prevProduct) => {
         const updatedURLs = [...prevProduct.uimageURLs];
+
         if (num > prevProduct.uimageURLs.length) {
           for (let i = prevProduct.uimageURLs.length; i < num; i++) {
             updatedURLs.push("");
           }
+        } else {
+          updatedURLs.splice(num); // Remove excess elements
         }
+
         return { ...prevProduct, uimageURLs: updatedURLs };
       });
     } else {
@@ -302,15 +306,13 @@ export default function ViewProducts() {
           </div>
         </div>
       )}
-      <form action="">
-        <input
-          placeholder="Search for products"
-          type="text"
-          name="searchText"
-          onChange={onChangeSearch}
-          style={{ marginTop: "20px" }}
-        />
-      </form>
+      <input
+        placeholder="Search for products"
+        type="text"
+        name="searchText"
+        onChange={onChangeSearch}
+        style={{ marginTop: "20px", padding: "10px", width: "50%" }}
+      />
       <h2>
         {products.length === 0 &&
           "No Products Available. Add a product to see."}

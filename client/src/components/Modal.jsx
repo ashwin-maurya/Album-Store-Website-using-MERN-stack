@@ -23,7 +23,7 @@ export default function Modal(props) {
         </div>
         <div className="follow-us-modal">
           <a
-            href="https://codepen.io/Idered/pen/kaYXyd"
+            href="https://t.me/weddingpsdfile"
             className="telegram modal-icons"
             onClick={() => {
               closeModal();
@@ -38,7 +38,7 @@ export default function Modal(props) {
           </a>
 
           <a
-            href="https://t.me/weddingpsdfile"
+            href="https://www.youtube.com/@WeDDinGPiXeLPSD?sub_confirmation=1"
             className="youtube modal-icons"
             onClick={() => {
               closeModal();

@@ -19,9 +19,16 @@
 
 #intro {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+}
+
+.foot-head {
+    width: 60%;
+}
+
+#intro p {
+    text-align: justify;
 }
 
 #intro .logo {
@@ -40,6 +47,9 @@
 }
 
 @media screen and (max-width: 1280px) {
+    #intro {
+        flex-direction: column;
+    }
     #intro {
         margin: 0 0 3em 0;
         text-align: center;
@@ -119,5 +129,37 @@
     }
     .copy-menu a {
         font-size: 15px;
+    }
+}
+
+.ad-card {
+    width: 30%;
+    margin: 10px 0;
+}
+
+.social-links {
+    display: flex;
+}
+
+.social-links a {
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s;
+}
+
+.social-links a:hover {
+    transform: translateY(-10px);
+}
+
+@media screen and (max-width: 600px) {
+    .ad-card,
+    .foot-head {
+        width: 100%;
     }
 }

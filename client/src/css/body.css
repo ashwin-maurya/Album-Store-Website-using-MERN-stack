@@ -3,7 +3,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     flex-direction: column;
 }
 
@@ -23,7 +23,7 @@ span {
     text-align: justify;
 }
 
-*::-webkit-scrollbar {
+div::-webkit-scrollbar {
     display: none;
 }
 

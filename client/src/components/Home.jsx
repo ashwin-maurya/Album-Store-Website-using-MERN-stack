@@ -10,7 +10,7 @@ import SocialIconsHorizontal from "./SocialIconsHorizontal";
 
 export default function Home() {
   const { showAlert } = useAlert();
-
+  console.log("HOME");
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const onChange = (e) => {

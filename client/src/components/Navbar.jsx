@@ -21,7 +21,7 @@ export default function Navbar() {
   }
 
   const getCompleteSearchText = (element) => {
-    if (element.tagName === "A") {
+    if (element.tagName === "SPAN") {
       const nestedUl = element.querySelector("ul");
       if (nestedUl) {
         return element.textContent.trim();
@@ -48,11 +48,9 @@ export default function Navbar() {
 
   const handleClickLink = (event) => {
     event.stopPropagation(); // Stop event propagation
-    if (event.target.tagName === "A") {
+    if (event.target.tagName === "SPAN") {
       const searchText = getCompleteSearchText(event.target);
-      if (searchText !== "HOME") {
-        search(searchText);
-      }
+      search(searchText);
     }
   };
 
@@ -109,217 +107,215 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link>
+            <span>
               ALBUM
               <img src={arrowDown} alt="" />
-            </Link>
+            </span>
             <ul>
               <li>
-                <Link>
+                <span>
                   Wedding Album Psd design
                   <img src={arrowRight} alt="" />
-                </Link>
+                </span>
                 <ul>
                   <li>
-                    <Link>Size 12×36</Link>
+                    <span>Size 12×36</span>
                   </li>
                   <li>
-                    <Link>12×30</Link>
+                    <span>12×30</span>
                   </li>
                   <li>
-                    <Link>14×40</Link>
+                    <span>14×40</span>
                   </li>
                   <li>
-                    <Link>8×24</Link>
+                    <span>8×24</span>
                   </li>
                   <li>
-                    <Link>18×24</Link>
+                    <span>18×24</span>
                   </li>
                   <li>
-                    <Link>16×24</Link>
+                    <span>16×24</span>
                   </li>
                   <li>
-                    <Link>8×24</Link>
+                    <span>8×24</span>
                   </li>
                   <li>
-                    <Link>8×12</Link>
+                    <span>8×12</span>
                   </li>
                 </ul>
               </li>
               <li>
-                <Link>
+                <span>
                   DM Wedding <img src={arrowRight} alt="" />
-                </Link>
+                </span>
 
                 <ul>
                   <li>
-                    <Link>Size 12×36</Link>
+                    <span>Size 12×36</span>
                   </li>
                   <li>
-                    <Link>12×30</Link>
+                    <span>12×30</span>
                   </li>
                   <li>
-                    <Link>14×40</Link>
+                    <span>14×40</span>
                   </li>
                   <li>
-                    <Link>8×24</Link>
+                    <span>8×24</span>
                   </li>
                   <li>
-                    <Link>18×24</Link>
+                    <span>18×24</span>
                   </li>
                   <li>
-                    <Link>16×24</Link>
+                    <span>16×24</span>
                   </li>
                   <li>
-                    <Link>8×24</Link>
+                    <span>8×24</span>
                   </li>
                   <li>
-                    <Link>8×12</Link>
+                    <span>8×12</span>
                   </li>
                 </ul>
               </li>
               <li>
-                <Link>
+                <span>
                   Pre Wedding psd <img src={arrowRight} alt="" />
-                </Link>
+                </span>
                 <ul>
                   <li>
-                    <Link>Size 12×36</Link>
+                    <span>Size 12×36</span>
                   </li>
                   <li>
-                    <Link>14×40</Link>
+                    <span>14×40</span>
                   </li>
                   <li>
-                    <Link>18×24</Link>
+                    <span>18×24</span>
                   </li>
                   <li>
-                    <Link>16×24</Link>
+                    <span>16×24</span>
                   </li>
                 </ul>
               </li>
               <li>
-                <Link>
+                <span>
                   Wedding Album Cover <img src={arrowRight} alt="" />
-                </Link>
+                </span>
                 <ul>
                   <li>
-                    <Link>Size 12×36</Link>
+                    <span>Size 12×36</span>
                   </li>
                   <li>
-                    <Link>8×24</Link>
+                    <span>8×24</span>
                   </li>
                   <li>
-                    <Link>18×24</Link>
+                    <span>18×24</span>
                   </li>
                   <li>
-                    <Link>16×24</Link>
+                    <span>16×24</span>
                   </li>
                 </ul>
               </li>
               <li>
-                <Link>
+                <span>
                   Birthday album PSD
                   <img src={arrowRight} alt="" />
-                </Link>
+                </span>
                 <ul>
                   <li>
-                    <Link>Size 12×36</Link>
+                    <span>Size 12×36</span>
                   </li>
                   <li>
-                    <Link>12×30</Link>
+                    <span>12×30</span>
                   </li>
                   <li>
-                    <Link>14×40</Link>
+                    <span>14×40</span>
                   </li>
                   <li>
-                    <Link>8×24</Link>
+                    <span>8×24</span>
                   </li>
                   <li>
-                    <Link>18×24</Link>
+                    <span>18×24</span>
                   </li>
                   <li>
-                    <Link>16×24</Link>
+                    <span>16×24</span>
                   </li>
                   <li>
-                    <Link>8×24</Link>
+                    <span>8×24</span>
                   </li>
                   <li>
-                    <Link>8×12</Link>
+                    <span>8×12</span>
                   </li>
                 </ul>
               </li>
               <li>
-                <Link>
+                <span>
                   {" "}
                   Font
                   <img src={arrowRight} alt="" />
-                </Link>
+                </span>
                 <ul>
                   <li>
-                    <Link>Haldi</Link>
+                    <span>Haldi</span>
                   </li>
                   <li>
-                    <Link>Wedding</Link>
+                    <span>Wedding</span>
                   </li>
                   <li>
-                    <Link>Pre wedding</Link>
+                    <span>Pre wedding</span>
                   </li>
                   <li>
-                    <Link>Vidhi</Link>
+                    <span>Vidhi</span>
                   </li>
                 </ul>
               </li>
             </ul>
           </li>
           <li>
-            <Link>
+            <span>
               PHOTOSHOP
               <img src={arrowDown} alt="" />
-            </Link>
+            </span>
 
             <ul>
               <li>
-                <Link>Clipart</Link>
-              </li>
-              <li>
-                <Link>Death Frames</Link>
-              </li>
-              <li>
-                <Link>Font</Link>
+                <span>Clipart</span>
               </li>
 
               <li>
-                <Link>Gradients</Link>
-              </li>
-              <li>
-                <Link>Overlay</Link>
-              </li>
-              <li>
-                <Link>Photo Color Luts</Link>
-              </li>
-              <li>
-                <Link>Masks</Link>
-              </li>
-              <li>
-                <Link>Mockup</Link>
+                <span>Font</span>
               </li>
 
               <li>
-                <Link>Invitation PSD</Link>
+                <span>Gradients</span>
               </li>
               <li>
-                <Link>Shapes</Link>
+                <span>Overlay</span>
               </li>
               <li>
-                <Link>Poster</Link>
+                <span>Photo Color Luts</span>
               </li>
               <li>
-                <Link>Font Text Style</Link>
+                <span>Masks</span>
+              </li>
+              <li>
+                <span>Mockup</span>
+              </li>
+
+              <li>
+                <span>Invitation PSD</span>
+              </li>
+              <li>
+                <span>Shapes</span>
+              </li>
+              <li>
+                <span>Poster</span>
+              </li>
+              <li>
+                <span>Font Text Style</span>
               </li>
             </ul>
           </li>
           <li>
-            <Link>Lightroom Preset</Link>
+            <span>LIGHTROOM PRESET</span>
           </li>
         </ul>
 
@@ -355,7 +351,7 @@ export default function Navbar() {
         <div className="right-nav-contact">
           <div className="icon-bar-horizontal">
             <a
-              href="https://t.me/weddingpsdfile"
+              href="https://www.instagram.com/albumpixelpsd/"
               target="_blank"
               rel="noreferrer"
               className="instagram"
@@ -364,7 +360,7 @@ export default function Navbar() {
               <i className="fa fa-instagram"></i>
             </a>
             <a
-              href="https://t.me/weddingpsdfile"
+              href="https://www.youtube.com/@WeDDinGPiXeLPSD?sub_confirmation=1"
               target="_blank"
               rel="noreferrer"
               className="youtube"

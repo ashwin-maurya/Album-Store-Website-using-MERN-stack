@@ -163,6 +163,7 @@ const ProductState = (props) => {
 
       if (json.success) {
         let newProducts = JSON.parse(JSON.stringify(products));
+        console.log(uimageURLs[0]);
         for (let index = 0; index <= newProducts.length; index++) {
           if (newProducts[index]._id === id) {
             newProducts[index].category = category;
