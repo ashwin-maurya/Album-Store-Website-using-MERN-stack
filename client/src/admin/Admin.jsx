@@ -5,6 +5,7 @@ import ViewProduct from "./ViewProduct";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "../css/admin.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function Admin() {
   const navigate = useNavigate();
   useEffect(() => {

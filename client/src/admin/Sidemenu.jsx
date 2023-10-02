@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/sidemenu.css";
-import { Link, useLocation } from "react-router-dom";
 import logo from "../images/home/web-logo.png";
 import { useNavigate } from "react-router-dom";
 
